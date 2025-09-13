@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Attorney Avatar</title>
+</head>
+<body>
+    <canvas id="avatarCanvas" width="100" height="100"></canvas>
+    <script>
+        const canvas = document.getElementById('avatarCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Draw background
+        ctx.fillStyle = '#4a90e2';
+        ctx.fillRect(0, 0, 100, 100);
+        
+        // Draw circle for head
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(50, 35, 15, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // Draw body
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(50, 85, 25, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // Draw text
+        ctx.fillStyle = '#4a90e2';
+        ctx.font = 'bold 12px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('ATTY', 50, 55);
+        
+        // Convert to data URL
+        const dataURL = canvas.toDataURL('image/png');
+        console.log('Data URL:', dataURL);
+        
+        // Create download link
+        const link = document.createElement('a');
+        link.download = 'attorney-avatar.png';
+        link.href = dataURL;
+        link.click();
+    </script>
+</body>
+</html>
